@@ -8,7 +8,7 @@ Is your server running?
 If it's working through Postman, check the client.
 If it's not working through Postman, check the server route.
 Don't forget to track your code using the console log.
-If you don't have this extension, utilize React Developer Tools when you can.
+If you don't have this extension, utilize React Developer Tools (https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) when you can.
 You can view each component, what props are being passed, and all sorts of information regarding the react build.
 Your teams project should start here as the root file.
 
@@ -18,9 +18,11 @@ Wireframe
 This is not meant to be a pixel perfect wireframe but a general layout to aim toward. As long as all the concepts of the project are utilize, feel free to use some creative design (colors, minor layout, fonts, etc) for your teams project.
 
 Figma React Chat
+https://www.figma.com/file/sg01D9Z3HG7B4esNKqvUAM/React-Chat-Wireframe?node-id=0%3A1&t=EolhnZUCLFm9TP53-1
 
 Data Flow
-Canva Chart
+Canvas Chart
+https://www.canva.com/design/DAFfJ3E5pQc/8Go3CUVUG_Q0fmNByeD0VA/edit?utm_content=DAFfJ3E5pQc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 Tickets
 Each ticket will have a collection of items to complete. Consider when you are updating your repo to include the status of each ticket representing which portion you have accomplished.
@@ -76,7 +78,7 @@ This can be handled however your team decides.
 Stretch Goals: #U6_05
 Include a project-details.md to the root directory.Customize styling.
 Detail the concept of this project in pseudo code within the document.
-Pseudo Code Article
+Pseudo Code Article (https://www.geeksforgeeks.org/how-to-write-a-pseudo-code/)
 Make it so that the update and delete options for a message is only available to the owner of that message.
 Create an interval to update the rooms messages every set time frame (ex: every 30 seconds, a request is triggered.)
 Make it so that the update and delete options for a rooms is only available to the owner of that rooms.
