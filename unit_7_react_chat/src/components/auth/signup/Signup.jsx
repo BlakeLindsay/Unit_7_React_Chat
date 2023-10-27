@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Signup() {
+function Signup(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -11,15 +11,15 @@ function Signup() {
 
 
   return (
-    <div>
-        <form>
-        <input type="text" placeholder='email' onChange={(e) => setEmail(e.target.value)} />
-            <input type="text " placeholder='first' onChange={(e) => setFirst(e.target.value)}/>
-            <input type="text" placeholder='last' onChange={(e) => setLast(e.target.value)}/>
-            <input type="text" placeholder='password' onChange={(e) => setPassword(e.target.value)}  />
-            <button type='submit' onClick={displayInputFields}>Submit</button>
-        </form>
-    </div>
+	<div>
+		<form>
+			<input type="text " placeholder='first' onChange={(e) => setFirst(e.target.value)}/>
+			<input type="text" placeholder='last' onChange={(e) => setLast(e.target.value)}/>
+			<input type="text" placeholder='email' onChange={(e) => setEmail(e.target.value)} />
+			<input type="text" placeholder='password' onChange={(e) => setPassword(e.target.value)}  />
+			<button type='submit' onClick={displayInputFields}>Submit</button>
+		</form>
+	</div>
   )
   async function displayInputFields(e) {
      e.preventDefault();
@@ -54,4 +54,4 @@ function Signup() {
 }
 
 
-export default Signup
+export default Signup;
