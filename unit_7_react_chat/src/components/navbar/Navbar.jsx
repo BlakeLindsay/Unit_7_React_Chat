@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ token, clearToken}) => {
 	return (
 		<nav>
 			Bränd
