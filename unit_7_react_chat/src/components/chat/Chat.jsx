@@ -1,18 +1,9 @@
-import Display from "./Display";
-import { useNavigate } from "react-router-dom";
 
-function Chat(props) {
-	const navigate = useNavigate('/');
 
-	if(!props.token) {
-		navigate();
-	}
-
+function Chat() {
 	return (
-		<div>
-			<Display token={props.token}/>
-		</div>
-	)
+		<div>"Chat"</div>
+		)
 };
 
-export default Chat;
+export default Chat

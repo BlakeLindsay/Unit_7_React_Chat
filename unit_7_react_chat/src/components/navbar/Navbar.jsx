@@ -1,17 +1,9 @@
-// import { Link } from "react-router-dom";
-import Logout from "./Logout";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ token, clearToken}) => {
 	return (
 		<nav>
-			<span>Bränd</span>
-			{
-				!token
-				?
-				<Logout clearToken={clearToken}/>
-				:
-				null
-			}
+			Bränd
 		</nav>
 	)
 };

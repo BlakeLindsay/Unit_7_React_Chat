@@ -9,7 +9,7 @@ import Login from './components/auth/login/Login';
 import Chat from './components/chat/Chat';
 
 function App() {
-	const [token, setToken] = useState('');
+	const [token, setToken] = useState('asdf');
 
 	useEffect(() => {
 		setToken(localStorage.token);
