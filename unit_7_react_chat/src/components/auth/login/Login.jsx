@@ -8,21 +8,20 @@ function Login() {
     e.preventDefault();
     // console.log(username, password);
     const response = await fetch("http://localhost:4000/login", {
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        }),
-        method: 'POST',
-        body: JSON.stringify({
-            email,
-            password
-        })
-        
+			headers: new Headers({
+				'Content-Type': 'application/json'
+			}),
+			method: 'POST',
+			body: JSON.stringify({
+				email,
+				password
+			})
     });
 
     const result = await response.json();
     // setToken(result.token);
     console.log(result);
-
+	}
 
   return (
     <div>
@@ -44,6 +43,6 @@ function Login() {
 
     </div>
   );
-}}
+}
 
 export default Login;   
