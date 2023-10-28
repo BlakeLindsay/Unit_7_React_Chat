@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({setToken}) {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,9 +21,13 @@ function Login() {
 			})
     });
 
-    const result = await response.json();
-    // setToken(result.token);
-    console.log(result);
+    const results = await response.json();
+    console.log(response.status);
+    setToken(results.token);
+    if (response.status === 200) {
+      navigate('/signup');
+    }
+  
 	}
 
   return (
@@ -39,6 +46,9 @@ function Login() {
         <br />
         {/* button:s */}
         <button type="submit">Submit</button>
+        <button onClick={() => navigate('/signup')}>create account</button>
+        {/* end button:s */}
+        <br />
       </form>
 
     </div>
