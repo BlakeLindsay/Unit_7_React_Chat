@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function Signup(props) {
-    const navigate = useNavigate();
+    const navigate = useNavigate('/chat');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
