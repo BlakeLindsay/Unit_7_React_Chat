@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 function Signup(props) {
+    const navigate = useNavigate('/chat');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
