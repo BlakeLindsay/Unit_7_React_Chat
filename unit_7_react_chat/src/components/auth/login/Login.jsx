@@ -10,7 +10,7 @@ function Login({setToken}) {
   async function loginUser(e) {
     e.preventDefault();
     // console.log(username, password);
-    const response = await fetch("http://localhost:4000/login", {
+    const response = await fetch("http://localhost:4000/user/login", {
 			headers: new Headers({
 				'Content-Type': 'application/json'
 			}),
@@ -25,7 +25,7 @@ function Login({setToken}) {
     console.log(response.status);
     setToken(results.token);
     if (response.status === 200) {
-      navigate('/signup');
+      navigate('/chat');
     }
   
 	}
@@ -45,7 +45,7 @@ function Login({setToken}) {
         />
         <br />
         {/* button:s */}
-        <button type="submit">Submit</button>
+        <button type="submit">Submit</button> 
         <button onClick={() => navigate('/signup')}>create account</button>
         {/* end button:s */}
         <br />
