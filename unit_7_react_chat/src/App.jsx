@@ -40,7 +40,7 @@ function App() {
 					</Routes>
 				<Footer />
 			</BrowserRouter>
-			{token ? 'Token is Updated' : 'not'}
+			{token}
     </div>
   );
 }

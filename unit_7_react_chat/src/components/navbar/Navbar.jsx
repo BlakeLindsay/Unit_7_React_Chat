@@ -6,7 +6,7 @@ const Navbar = ({ token, clearToken}) => {
 		<nav>
 			<span>Bränd</span>
 			{
-				!token
+				token
 				?
 				<Logout clearToken={clearToken}/>
 				:
