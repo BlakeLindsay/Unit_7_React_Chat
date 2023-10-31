@@ -37,7 +37,7 @@ function Display(props) {
 				})
 			});
 			let results = await res.json();
-			console.log(results);
+			console.log(res);
 		} catch(error) {
 			console.log(error);
 		}

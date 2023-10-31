@@ -33,9 +33,9 @@ function App() {
 			<BrowserRouter>
 				<Navbar token={token} clearToken={clearToken}/>
 					<Routes>
-						<Route path='/' element={<Auth setToken={setToken} />} />
-						<Route path='/signup' element={<Signup setToken={setToken} />} />
-						<Route path='/login' element={<Login setToken={setToken} />} />
+						<Route path='/' element={<Auth setToken={updateToken} />} />
+						<Route path='/signup' element={<Signup setToken={updateToken} />} />
+						<Route path='/login' element={<Login setToken={updateToken} />} />
 						<Route path='/chat' element={<Chat />}/>
 					</Routes>
 				<Footer />
