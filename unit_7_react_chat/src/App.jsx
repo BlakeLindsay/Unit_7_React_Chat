@@ -36,7 +36,7 @@ function App() {
 						<Route path='/' element={<Auth setToken={updateToken} />} />
 						<Route path='/signup' element={<Signup setToken={updateToken} />} />
 						<Route path='/login' element={<Login setToken={updateToken} />} />
-						<Route path='/chat' element={<Chat />}/>
+						<Route path='/chat' element={<Chat token={token}/>}/>
 					</Routes>
 				<Footer />
 			</BrowserRouter>
