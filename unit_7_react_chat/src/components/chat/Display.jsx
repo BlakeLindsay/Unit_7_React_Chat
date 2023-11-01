@@ -19,7 +19,7 @@ function Display(props) {
 			</span>
 			<span>
 				<span>
-					<Delete />
+					<Delete roomList={roomList} getRoomList={getRoomList} currentRoom={currentRoom} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
 					<div>Description</div>
 					<div>{currentRoom.description}</div>
 					<Update />
