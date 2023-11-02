@@ -27,7 +27,7 @@ function Update({currentRoom, newDescription, newTitle, getRoomList, token}) {
 
 	return (
 		<div>
-			<button onClick={updateRoom}>update</button>
+			<button onClick={updateRoom}>Update</button>
 		</div>
 	)
 };
