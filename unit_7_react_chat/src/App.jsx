@@ -10,6 +10,7 @@ import Chat from './components/chat/Chat';
 
 function App() {
 	const [token, setToken] = useState('asdf');
+	const [userID, setUserID] = useState('');
 
 	useEffect(() => {
 		setToken(localStorage.token);
@@ -34,9 +35,9 @@ function App() {
 				<Navbar token={token} clearToken={clearToken}/>
 					<Routes>
 						<Route path='/' element={<Auth setToken={updateToken} />} />
-						<Route path='/signup' element={<Signup setToken={updateToken} />} />
-						<Route path='/login' element={<Login setToken={updateToken} />} />
-						<Route path='/chat' element={<Chat token={token}/>}/>
+						<Route path='/signup' element={<Signup setToken={updateToken} setUserID={setUserID} />} />
+						<Route path='/login' element={<Login setToken={updateToken} setUserID={setUserID} />} />
+						<Route path='/chat' element={<Chat token={token} userID={userID}/>}/>
 					</Routes>
 				<Footer />
 			</BrowserRouter>

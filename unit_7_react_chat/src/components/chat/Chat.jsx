@@ -10,7 +10,7 @@ function Chat(props) {
 
 	return (
 		<div>
-			<Display token={props.token}/>
+			<Display token={props.token} userID={props.userID}/>
 		</div>
 	)
 };

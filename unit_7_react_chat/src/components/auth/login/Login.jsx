@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login({setToken}) {
+function Login({setToken, setUserID}) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -23,6 +23,8 @@ function Login({setToken}) {
 
     const results = await response.json();
     console.log(response.status);
+		console.log(results);
+		setUserID(results.user._id);
     setToken(results.token);
     if (response.status === 200) {
       navigate('/chat');

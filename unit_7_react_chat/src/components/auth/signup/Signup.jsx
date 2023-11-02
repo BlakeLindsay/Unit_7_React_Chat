@@ -27,8 +27,8 @@ function Signup(props) {
   async function displayInputFields(e) {
      e.preventDefault();
 
-     console.log('testing this function')
-     console.log(email)
+     console.log('testing this function');
+     console.log(email);
 
      try {
         let response = await fetch(signupRoute, {
@@ -46,8 +46,9 @@ function Signup(props) {
             })
         })
             let results = await response.json();
-            console.log(results)
-            props.setToken(results.token)
+            console.log(results);
+						props.setUserID(results.user._id);
+            props.setToken(results.token);
             if (response.status === 200) {
                 navigate('/chat');
             }
