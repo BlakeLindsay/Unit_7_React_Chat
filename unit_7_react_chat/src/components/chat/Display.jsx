@@ -7,6 +7,9 @@ function Display(props) {
 	let [roomList, setRoomList] = useState([]);
 	// room targeted for update, delete, and view
 	let [currentRoom, setCurrentRoom] = useState({});
+	let [newDescription, setNewDescription] = useState('');
+	let [newTitle, setNewTitle] = useState('');
+
 
 	useEffect(() => {initRoomList()},[]);
 
@@ -19,13 +22,30 @@ function Display(props) {
 			</span>
 			<span>
 				<span>
-					<Delete roomList={roomList} getRoomList={getRoomList} currentRoom={currentRoom} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
-					<div>Description</div>
-					<div>{currentRoom.description}</div>
-					<Update />
+					{
+						props.userID === currentRoom.ownerId
+						?
+						<div>
+							<Delete roomList={roomList} getRoomList={getRoomList} currentRoom={currentRoom} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
+							<div>Description</div>
+							<input type="text" placeholder={`${currentRoom.description}`} onChange={(e) => setNewDescription(e.target.value)} />
+							<Update currentRoom={currentRoom} newDescription={newDescription} newTitle={newTitle} getRoomList={getRoomList} token={props.token}/>
+						</div>
+						:
+						<div>
+							<div>Description</div>
+							<div>{currentRoom.description}</div>
+						</div>
+					}
 				</span>
 				<span>
-					<div>{currentRoom.title}</div>
+					{
+						props.userID === currentRoom.ownerId
+						?
+						<input type="text" placeholder={`${currentRoom.title}`} onChange={(e) => setNewTitle(e.target.value)} />
+						:
+						<div>{currentRoom.title}</div>
+					}
 					<div>Message Display</div>
 				</span>
 			</span>
