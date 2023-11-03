@@ -5,6 +5,7 @@ function Signup(props) {
     const navigate = useNavigate('/chat');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [verifyPassword, setVerifyPassword] = useState("");
 
     const [username, setUsername]= useState("");
 
@@ -18,7 +19,8 @@ function Signup(props) {
 			<input type="text" placeholder='last' onChange={(e) => setLast(e.target.value)}/> */}
 			<input type="text" placeholder='username' onChange={(e) => setUsername(e.target.value)} />
             <input type="text" placeholder='email' onChange={(e) => setEmail(e.target.value)} />
-			<input type="text" placeholder='password' onChange={(e) => setPassword(e.target.value)}  />
+			<input type="text" placeholder='password' onChange={(e) => setPassword(e.target.value)} />
+			<input type="text" placeholder='verify password' onChange={(e) => setVerifyPassword(e.target.value)} />
 			<button type='submit' onClick={displayInputFields}>Submit</button>
             <button onClick={() => navigate('/login')}>Back to Login</button>
 		</form>
@@ -27,8 +29,10 @@ function Signup(props) {
   async function displayInputFields(e) {
      e.preventDefault();
 
-     console.log('testing this function');
-     console.log(email);
+    if (password !== verifyPassword) {
+			alert('Your verify password does not match.');
+			return;
+		}
 
      try {
         let response = await fetch(signupRoute, {
