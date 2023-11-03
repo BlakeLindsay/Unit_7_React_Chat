@@ -14,12 +14,15 @@ function App() {
 
 	useEffect(() => {
 		setToken(localStorage.token);
+		setUserID(localStorage.userID);
 	},
 	 []);
 
-	 function updateToken(newToken) {
+	 function updateToken(newToken, newUserID) {
 		setToken(newToken);
     localStorage.token = newToken;
+		setUserID(newUserID);
+		localStorage.userID = newUserID;
 	}
 
 	function clearToken() {
@@ -35,8 +38,8 @@ function App() {
 				<Navbar token={token} clearToken={clearToken}/>
 					<Routes>
 						<Route path='/' element={<Auth setToken={updateToken} />} />
-						<Route path='/signup' element={<Signup setToken={updateToken} setUserID={setUserID} />} />
-						<Route path='/login' element={<Login setToken={updateToken} setUserID={setUserID} />} />
+						<Route path='/signup' element={<Signup setToken={updateToken} />} />
+						<Route path='/login' element={<Login setToken={updateToken} />} />
 						<Route path='/chat' element={<Chat token={token} userID={userID}/>}/>
 					</Routes>
 				<Footer />

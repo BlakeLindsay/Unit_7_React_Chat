@@ -24,8 +24,7 @@ function Login({setToken, setUserID}) {
     const results = await response.json();
     console.log(response.status);
 		console.log(results);
-		setUserID(results.user._id);
-    setToken(results.token);
+    setToken(results.token, results.user._id);
     if (response.status === 200) {
       navigate('/chat');
     }

@@ -1,7 +1,7 @@
 import AddRoom from "./AddRoom";
 import Delete from "./Delete";
 import Update from "./Update";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function Display(props) {
 	let [roomList, setRoomList] = useState([]);
@@ -9,6 +9,8 @@ function Display(props) {
 	let [currentRoom, setCurrentRoom] = useState({});
 	let [newDescription, setNewDescription] = useState('');
 	let [newTitle, setNewTitle] = useState('');
+	let descriptionRef = useRef(null);
+	console.log(descriptionRef);
 
 
 	useEffect(() => {initRoomList()},[]);
@@ -28,7 +30,7 @@ function Display(props) {
 						<div>
 							<Delete roomList={roomList} getRoomList={getRoomList} currentRoom={currentRoom} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
 							<div>Description</div>
-							<input type="text" placeholder={`${currentRoom.description}`} onChange={(e) => setNewDescription(e.target.value)} />
+							<input ref={descriptionRef} type="text" placeholder={`${currentRoom.description}`} onChange={(e) => setNewDescription(e.target.value)} />
 							<Update currentRoom={currentRoom} newDescription={newDescription} newTitle={newTitle} getRoomList={getRoomList} token={props.token}/>
 						</div>
 						:
