@@ -10,8 +10,6 @@ function Display(props) {
 	let [newDescription, setNewDescription] = useState('');
 	let [newTitle, setNewTitle] = useState('');
 	let descriptionRef = useRef(null);
-	console.log(descriptionRef);
-
 
 	useEffect(() => {initRoomList()},[]);
 
@@ -31,7 +29,7 @@ function Display(props) {
 							<Delete roomList={roomList} getRoomList={getRoomList} currentRoom={currentRoom} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
 							<div>Description</div>
 							<input ref={descriptionRef} type="text" placeholder={`${currentRoom.description}`} onChange={(e) => setNewDescription(e.target.value)} />
-							<Update currentRoom={currentRoom} newDescription={newDescription} newTitle={newTitle} getRoomList={getRoomList} token={props.token}/>
+							<Update currentRoom={currentRoom} newDescription={newDescription} newTitle={newTitle} getRoomList={getRoomList} token={props.token} descriptionRef={descriptionRef} />
 						</div>
 						:
 						<div>

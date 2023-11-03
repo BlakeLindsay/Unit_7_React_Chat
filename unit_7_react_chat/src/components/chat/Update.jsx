@@ -1,6 +1,6 @@
 
 
-function Update({currentRoom, newDescription, newTitle, getRoomList, token}) {
+function Update({currentRoom, newDescription, newTitle, getRoomList, token, descriptionRef}) {
 	async function updateRoom() {
 		if (!newDescription && !newTitle) return;
 		if (!newDescription) newDescription = currentRoom.description;
@@ -19,6 +19,7 @@ function Update({currentRoom, newDescription, newTitle, getRoomList, token}) {
 			});
 			let results = await res.json();
 			console.log(results);
+			descriptionRef.current.value = '';
 			await getRoomList();
 		} catch(error) {
 			console.log(error);
