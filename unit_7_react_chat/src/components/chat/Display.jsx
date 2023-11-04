@@ -2,6 +2,7 @@ import AddRoom from "./AddRoom";
 import Delete from "./Delete";
 import Update from "./Update";
 import { useState, useEffect, useRef } from 'react';
+import { Card, CardBody, CardTitle, Container, Row, Col, Button } from "reactstrap";
 
 function Display(props) {
 	let [roomList, setRoomList] = useState([]);
@@ -14,42 +15,51 @@ function Display(props) {
 	useEffect(() => {initRoomList()},[]);
 
 	return (
-		<div>
-			<span>
+		<Container>
+			{/* <span>
 				<div>Available Rooms</div>
 				<div>{roomListDiv(roomList, switchCurrentRoom)}</div>
 				<AddRoom roomList={roomList} getRoomList={getRoomList} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
-			</span>
-			<span>
-				<span>
-					{
-						props.userID === currentRoom.ownerId
-						?
-						<div>
-							<Delete roomList={roomList} getRoomList={getRoomList} currentRoom={currentRoom} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
-							<div>Description</div>
-							<input ref={descriptionRef} type="text" placeholder={`${currentRoom.description}`} onChange={(e) => setNewDescription(e.target.value)} />
-							<Update currentRoom={currentRoom} newDescription={newDescription} newTitle={newTitle} getRoomList={getRoomList} token={props.token} descriptionRef={descriptionRef} />
-						</div>
-						:
-						<div>
-							<div>Description</div>
-							<div>{currentRoom.description}</div>
-						</div>
-					}
-				</span>
-				<span>
-					{
-						props.userID === currentRoom.ownerId
-						?
-						<input type="text" placeholder={`${currentRoom.title}`} onChange={(e) => setNewTitle(e.target.value)} />
-						:
-						<div>{currentRoom.title}</div>
-					}
-					<div>Message Display</div>
-				</span>
-			</span>
-		</div>
+			</span> */}
+			<Row xs="6">
+				<Col xs="5">
+				<h2>Available Rooms</h2>
+					{roomListDiv(roomList, switchCurrentRoom)}
+					<AddRoom roomList={roomList} getRoomList={getRoomList} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
+				</Col>
+				<Col>
+					<Row>
+						<Col>
+							{
+								props.userID === currentRoom.ownerId
+								?
+								<div>
+									<Delete roomList={roomList} getRoomList={getRoomList} currentRoom={currentRoom} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
+									<div>Description</div>
+									<input ref={descriptionRef} type="text" placeholder={`${currentRoom.description}`} onChange={(e) => setNewDescription(e.target.value)} />
+									<Update currentRoom={currentRoom} newDescription={newDescription} newTitle={newTitle} getRoomList={getRoomList} token={props.token} descriptionRef={descriptionRef} />
+								</div>
+								:
+								<div>
+									<div>Description</div>
+									<div>{currentRoom.description}</div>
+								</div>
+							}
+						</Col>
+						<Col>
+							{
+								props.userID === currentRoom.ownerId
+								?
+								<input type="text" placeholder={`${currentRoom.title}`} onChange={(e) => setNewTitle(e.target.value)} />
+								:
+								<div>{currentRoom.title}</div>
+							}
+							<div>Message Display</div>
+						</Col>
+					</Row>
+				</Col>
+			</Row>
+		</Container>
 	)
 
 	// run on page load
@@ -80,6 +90,11 @@ function Display(props) {
 				method: 'GET'
 			});
 
+			if (res.status === 404) {
+				setRoomList([]);
+				return [];
+			}
+
 			let results = await res.json();
 			setRoomList(results.getAllRooms);
 			return results.getAllRooms;
@@ -89,11 +104,15 @@ function Display(props) {
 			// setCurrentRoom(roomList[0]);
 		} catch(error) {
 			console.log(error);
+			return [];
 		}
 	}
 
 	// use this to set the current room, not setCurrentRoom()
 	function switchCurrentRoom(room) {
+		if (!room) {
+			return;
+		}
 		setCurrentRoom(room);
 		console.log(currentRoom);
 		// setRoomTitle(currentRoom.title);
@@ -102,11 +121,16 @@ function Display(props) {
 };
 
 function roomListDiv(roomList, switchCurrentRoom) {
+	if (!roomList) {
+		return (
+			null
+		)
+	}
 	return (
 		roomList.map((room, index) =>
-						<button key={index} onClick={() => switchCurrentRoom(roomList[index])}>
-							{room.title}
-						</button>
+				<Button key={index} onClick={() => switchCurrentRoom(roomList[index])} className="d-block">
+					{room.title}
+				</Button>
 		)
 	)
 };
