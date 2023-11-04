@@ -1,7 +1,8 @@
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import Navbar from './components/navbar/Navbar';
+import CustomNavbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Auth from './components/auth/Auth';
 import Signup from './components/auth/signup/Signup';
@@ -35,16 +36,16 @@ function App() {
   return (
     <div className="App">
 			<BrowserRouter>
-				<Navbar token={token} clearToken={clearToken}/>
+				<CustomNavbar token={token} clearToken={clearToken}/>
 					<Routes>
 						<Route path='/' element={<Auth setToken={updateToken} />} />
 						<Route path='/signup' element={<Signup setToken={updateToken} />} />
 						<Route path='/login' element={<Login setToken={updateToken} />} />
 						<Route path='/chat' element={<Chat token={token} userID={userID}/>}/>
 					</Routes>
-				<Footer />
 			</BrowserRouter>
-			{token}
+				<Footer />
+			{/* {token} */}
     </div>
   );
 }

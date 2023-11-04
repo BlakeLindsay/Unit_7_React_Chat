@@ -1,19 +1,23 @@
 // import { Link } from "react-router-dom";
 import Logout from "./Logout";
+import { Navbar } from "reactstrap";
 
-const Navbar = ({ token, clearToken}) => {
+const CustomNavbar = ({ token, clearToken}) => {
 	return (
-		<nav>
-			<span>Bränd</span>
-			{
-				token
-				?
-				<Logout clearToken={clearToken}/>
-				:
-				null
-			}
-		</nav>
+		// <nav>
+		// 	<span>Bränd</span>
+		// 	{
+		// 		token
+		// 		?
+		// 		<Logout clearToken={clearToken}/>
+		// 		:
+		// 		null
+		// 	}
+		// </nav>
+		<Navbar>
+			Bränd
+		</Navbar>
 	)
 };
 
-export default Navbar;
+export default CustomNavbar;
