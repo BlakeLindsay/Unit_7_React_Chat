@@ -1,4 +1,4 @@
-
+import { Button } from 'reactstrap';
 
 function Update({currentRoom, newDescription, newTitle, getRoomList, token, descriptionRef}) {
 	async function updateRoom() {
@@ -28,7 +28,7 @@ function Update({currentRoom, newDescription, newTitle, getRoomList, token, desc
 
 	return (
 		<div>
-			<button onClick={updateRoom}>Update</button>
+			<Button color="warning" onClick={updateRoom}>Update</Button>
 		</div>
 	)
 };

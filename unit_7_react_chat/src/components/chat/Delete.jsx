@@ -1,4 +1,4 @@
-
+import { Button } from 'reactstrap';
 
 function Delete({roomList, getRoomList, currentRoom, switchCurrentRoom, token}) {
 	async function deleteRoom() {
@@ -21,7 +21,7 @@ function Delete({roomList, getRoomList, currentRoom, switchCurrentRoom, token}) 
 
 	return (
 		<div>
-			<button onClick={deleteRoom}>Delete</button>
+			<Button color="danger" onClick={deleteRoom}>Delete</Button>
 		</div>
 	)
 };
