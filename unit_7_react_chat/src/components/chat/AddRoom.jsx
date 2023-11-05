@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Button, Input } from 'reactstrap';
 
 function AddRoom({roomList, getRoomList, switchCurrentRoom, token}) {
 	let[roomName, setRoomName] = useState('');
@@ -28,8 +29,8 @@ function AddRoom({roomList, getRoomList, switchCurrentRoom, token}) {
 
 	return (
 		<div>
-			<button onClick={addRoom}>Add</button>
-			<input type='text' placeholder='Room Name' onChange={(e) => setRoomName(e.target.value)} />
+			<Button onClick={addRoom}>Add</Button>
+			<Input type='text' placeholder='Room Name' onChange={(e) => setRoomName(e.target.value)} />
 		</div>
 	)
 };

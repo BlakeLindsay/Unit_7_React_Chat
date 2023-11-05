@@ -21,13 +21,13 @@ function Display(props) {
 				<div>{roomListDiv(roomList, switchCurrentRoom)}</div>
 				<AddRoom roomList={roomList} getRoomList={getRoomList} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
 			</span> */}
-			<Row xs="6">
+			<Row>
 				<Col xs="5">
 				<h2>Available Rooms</h2>
 					{roomListDiv(roomList, switchCurrentRoom)}
 					<AddRoom roomList={roomList} getRoomList={getRoomList} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
 				</Col>
-				<Col>
+				<Col xs="5">
 					<Row>
 						<Col>
 							{
