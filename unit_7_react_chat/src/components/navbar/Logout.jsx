@@ -1,3 +1,5 @@
+import React from "react";
+import { Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
 function Logout(props) {
@@ -9,7 +11,7 @@ function Logout(props) {
 	};
 
 	return (
-		<button onClick={logout}>Logout</button>
+		<Button color="danger" onClick={logout}>Logout</Button>
 	);
 };
 

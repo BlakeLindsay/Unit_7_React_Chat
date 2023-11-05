@@ -1,7 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function Login({setToken, setUserID}) {
+function Login({setToken}) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -26,31 +28,48 @@ function Login({setToken, setUserID}) {
 		console.log(results);
     setToken(results.token, results.user._id);
     if (response.status === 200) {
-      navigate('/chat');
+      if (results.user && results.user._id){
+        setToken(results.token, results.user._id);
+        navigate('/chat');
+      }
+
+     else {
+      console.error('User data is missing in the response')
     }
-  
+  } else {
+    console.error('Login Failded')
+
+  }
 	}
 
   return (
     <div>
-        <form onSubmit={loginUser}>
-        <input 
+        <Form onSubmit={loginUser}>
+          <FormGroup>
+          <Label for="email">Email</Label>
+        <Input 
           placeholder="email" 
           onChange={e => setEmail(e.target.value)} 
-        />
-        <br />
-        <input 
+          />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Password</Label>
+        <Input 
           placeholder="password" 
           type="password" 
           onChange={e => setPassword(e.target.value)} 
-        />
-        <br />
+          />
+          </FormGroup>
         {/* button:s */}
-        <button type="submit">Submit</button> 
-        <button onClick={() => navigate('/signup')}>create account</button>
+        <Button color="primary" type="submit">Submit</Button>
+        <Link to="/signup">
+          <Button color="secondary">create account</Button>"
+          </Link> 
+        {/* <button type="submit">Submit</button> 
+        <button onClick={() => navigate('/signup')}>create account</button> */}
         {/* end button:s */}
         <br />
-      </form>
+      </Form>
 
     </div>
   );
