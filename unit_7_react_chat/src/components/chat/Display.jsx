@@ -2,7 +2,7 @@ import AddRoom from "./AddRoom";
 import Delete from "./Delete";
 import Update from "./Update";
 import { useState, useEffect, useRef } from 'react';
-import { Card, CardBody, CardTitle, Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, Input } from "reactstrap";
 
 function Display(props) {
 	let [roomList, setRoomList] = useState([]);
@@ -16,11 +16,6 @@ function Display(props) {
 
 	return (
 		<Container>
-			{/* <span>
-				<div>Available Rooms</div>
-				<div>{roomListDiv(roomList, switchCurrentRoom)}</div>
-				<AddRoom roomList={roomList} getRoomList={getRoomList} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
-			</span> */}
 			<Row>
 				<Col xs="5">
 				<h2>Available Rooms</h2>
@@ -36,7 +31,7 @@ function Display(props) {
 								<div>
 									<Delete roomList={roomList} getRoomList={getRoomList} currentRoom={currentRoom} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
 									<div>Description</div>
-									<input ref={descriptionRef} type="text" placeholder={`${currentRoom.description}`} onChange={(e) => setNewDescription(e.target.value)} />
+									<Input ref={descriptionRef} type="text" placeholder={`${currentRoom.description}`} onChange={(e) => setNewDescription(e.target.value)} />
 									<Update currentRoom={currentRoom} newDescription={newDescription} newTitle={newTitle} getRoomList={getRoomList} token={props.token} descriptionRef={descriptionRef} />
 								</div>
 								:
@@ -50,7 +45,7 @@ function Display(props) {
 							{
 								props.userID === currentRoom.ownerId
 								?
-								<input type="text" placeholder={`${currentRoom.title}`} onChange={(e) => setNewTitle(e.target.value)} />
+								<Input type="text" placeholder={`${currentRoom.title}`} onChange={(e) => setNewTitle(e.target.value)} />
 								:
 								<div>{currentRoom.title}</div>
 							}
@@ -69,12 +64,6 @@ function Display(props) {
 			console.log(res);
 			console.log(res[0]);
 			switchCurrentRoom(res[0]);
-
-			// let results = await res.json();
-			// setRoomList(results.getAllRooms);
-			// console.log(roomList);
-			// console.log(roomList[0]);
-			// switchCurrentRoom(roomList[0]);
 		} catch(error) {
 			console.log(error);
 		}
@@ -98,10 +87,6 @@ function Display(props) {
 			let results = await res.json();
 			setRoomList(results.getAllRooms);
 			return results.getAllRooms;
-			// console.log(results);
-			// setRoomList(results.getAllRooms);
-			// console.log(roomList);
-			// setCurrentRoom(roomList[0]);
 		} catch(error) {
 			console.log(error);
 			return [];
