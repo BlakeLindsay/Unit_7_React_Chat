@@ -1,6 +1,7 @@
 import AddRoom from "./AddRoom";
 import Delete from "./Delete";
 import Update from "./Update";
+import MessageDisplay from "./message/Display";
 import { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Button, Input } from "reactstrap";
 
@@ -49,7 +50,7 @@ function Display(props) {
 								:
 								<div>{currentRoom.title}</div>
 							}
-							<div>Message Display</div>
+							<MessageDisplay token={props.token} userID={props.userID} currentRoom={currentRoom}/>
 						</Col>
 					</Row>
 				</Col>
