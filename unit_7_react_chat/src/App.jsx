@@ -43,8 +43,8 @@ function App() {
 						<Route path='/login' element={<Login setToken={updateToken} />} />
 						<Route path='/chat' element={<Chat token={token} userID={userID}/>}/>
 					</Routes>
-			</BrowserRouter>
 				<Footer />
+			</BrowserRouter>
 			{/* {token} */}
     </div>
   );
