@@ -16,7 +16,7 @@ function Display({token, userID, currentRoom}) {
 		<Container>
 			<Row>
 				<Col>
-					{MessageListDiv(messageList, getMessageList, token)}
+					{MessageListDiv(messageList, getMessageList, token, userID)}
 				</Col>
 			</Row>
 			<Row>
@@ -64,7 +64,7 @@ function Display({token, userID, currentRoom}) {
 	}
 }
 
-function MessageListDiv(messageList, getMessageList, token) {
+function MessageListDiv(messageList, getMessageList, token, userID) {
 	if (!messageList) {
 		return (
 			null
@@ -77,12 +77,21 @@ function MessageListDiv(messageList, getMessageList, token) {
 						<Col>
 							{message.text}
 						</Col>
-						<Col>
+						{
+							message.owner == userID
+							?
+							<>
+							<Col>
 							<Update message={message} getMessageList={getMessageList} token={token}/>
-						</Col>
-						<Col>
+							</Col>
+							<Col>
 							<Delete getMessageList={getMessageList} message={message} token={token}/>
-						</Col>
+							</Col>
+						</>
+						:
+						null
+						}
+						
 					</Row>
 				</Container>
 		)
