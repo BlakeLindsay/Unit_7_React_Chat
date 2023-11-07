@@ -78,7 +78,6 @@ function Signup(props) {
             
             } catch (error) {
                 console.log(error);
-                
             }
     }
 }

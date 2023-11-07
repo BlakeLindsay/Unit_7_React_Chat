@@ -1,4 +1,5 @@
 import {Button} from 'reactstrap';
+import { Trash } from "react-bootstrap-icons";
 
 function Delete({getMessageList, message, token}) {
 	async function deleteMessage() {
@@ -19,7 +20,7 @@ function Delete({getMessageList, message, token}) {
 	}
 
 	return (
-		<Button onClick={deleteMessage}>Delete</Button>
+		<Trash onClick={deleteMessage} />
 	)
 }
 
