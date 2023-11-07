@@ -75,23 +75,29 @@ function MessageListDiv(messageList, getMessageList, token, userID, newMessage, 
 				<Container key={index} style={{border: '2px solid grey'}}>
 					<Row>
 						<Col>
-							{message.text}
+							<Row>
+								{message.date}
+							</Row>
+							<Row>
+								<Col>
+									{message.text}
+								</Col>
+								{
+									message.owner == userID
+									?
+									<>
+									<Col>
+									<Update message={message} getMessageList={getMessageList} token={token} newMessage={newMessage}/>
+									</Col>
+									<Col>
+									<Delete getMessageList={getMessageList} message={message} token={token}/>
+									</Col>
+								</>
+								:
+								null
+								}
+							</Row>
 						</Col>
-						{
-							message.owner == userID
-							?
-							<>
-							<Col>
-							<Update message={message} getMessageList={getMessageList} token={token} newMessage={newMessage}/>
-							</Col>
-							<Col>
-							<Delete getMessageList={getMessageList} message={message} token={token}/>
-							</Col>
-						</>
-						:
-						null
-						}
-						
 					</Row>
 				</Container>
 		)
