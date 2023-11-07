@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 
 function Signup(props) {
     const navigate = useNavigate('/chat');
@@ -16,32 +16,35 @@ function Signup(props) {
 
   return (
 	<div>
-		<Form>
+        
+		<Form className="w-25" style={{background:"#cdb4db", padding:"4rem"}}>
 			{/* <input type="text " placeholder='first' onChange={(e) => setFirst(e.target.value)}/>
 			<input type="text" placeholder='last' onChange={(e) => setLast(e.target.value)}/>
              */}
-            <FormGroup>
-                <Label for="email">Email</Label>
-            <Input type="text" placeholder='email' onChange={(e) => setEmail(e.target.value)} />
+            <FormGroup style={{backgroundColor:"#cdb4db"}}>
+                <Label style={{margin: "1rem", padding:"0.5rem 8rem"}} for="signup">Sign Up</Label>
+            
+            <Input style={{textAlign:"center"}} type="text" placeholder='email' onChange={(e) => setEmail(e.target.value)} />
             </FormGroup>
              <FormGroup>
-			<Input type="text" placeholder='username' onChange={(e) => setUsername(e.target.value)} />
+			<Input style={{textAlign:"center"}} type="text" placeholder='username' onChange={(e) => setUsername(e.target.value)} />
 
              </FormGroup>
             <FormGroup>
-			<Input type="password" placeholder='password' onChange={(e) => setPassword(e.target.value)} />
+			<Input style={{textAlign:"center"}} type="password" placeholder='password' onChange={(e) => setPassword(e.target.value)} />
             </FormGroup>
             <FormGroup>
-			<Input type="password" placeholder='verify password' onChange={(e) => setVerifyPassword(e.target.value)} />
+			<Input style={{textAlign:"center"}} type="password" placeholder='verify password' onChange={(e) => setVerifyPassword(e.target.value)} />
             </FormGroup>
-			<Button color="primary"type='submit' onClick={displayInputFields}>Submit</Button>
+			<Button style={{background:"#735D78" }} type='submit' onClick={displayInputFields}>Submit</Button>
             {/* <button onClick={() => navigate('/login')}>Back to Login</button> */}
 
-            <Link to="/login">
+            <Link to="/login" style={{margin:"1rem"}}>
                 <Button color="secondary">Back to Login</Button>
             </Link>
 
 		</Form>
+        
 	</div>
   )
   async function displayInputFields(e) {
