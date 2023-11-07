@@ -15,7 +15,16 @@ const CustomNavbar = ({ token, clearToken}) => {
 		// 	}
 		// </nav>
 		<Navbar>
-			Bränd
+			<div>
+				Bränd
+			</div>
+			{
+				token
+				?
+				<Logout clearToken={clearToken}/>
+				:
+				null
+			}
 		</Navbar>
 	)
 };

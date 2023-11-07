@@ -11,7 +11,7 @@ function Update({message, getMessageList, token}) {
 		console.log(messageID);
 		console.log(newMessage);
 		try {
-			let res = await fetch(`http://127.0.0.1:4000/message/}`, {
+			let res = await fetch(`http://127.0.0.1:4000/message/`, {
 				headers: new Headers({
 					'content-type': 'application/json',
 					'Authorization': token
