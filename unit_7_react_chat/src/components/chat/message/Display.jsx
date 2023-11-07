@@ -8,7 +8,7 @@ function Display({token, userID, currentRoom}) {
 	let [messageList, setMessageList] = useState([]);
 	let [newMessage, setNewMessage] = useState([]);
 
-	console.log(currentRoom);
+	// console.log(currentRoom);
 
 	useEffect(() => {initMessageList()}, [,currentRoom])
 
@@ -16,12 +16,12 @@ function Display({token, userID, currentRoom}) {
 		<Container>
 			<Row>
 				<Col>
-					{MessageListDiv(messageList, getMessageList, token, userID)}
+					{MessageListDiv(messageList, getMessageList, token, userID, newMessage, setNewMessage)}
 				</Col>
 			</Row>
 			<Row>
 				<Col>
-					<AddMessage getMessageList={getMessageList} token={token} currentRoom={currentRoom} />
+					<AddMessage getMessageList={getMessageList} token={token} currentRoom={currentRoom} newMessage={newMessage} setNewMessage={setNewMessage}/>
 				</Col>
 			</Row>
 		</Container>
@@ -64,7 +64,7 @@ function Display({token, userID, currentRoom}) {
 	}
 }
 
-function MessageListDiv(messageList, getMessageList, token, userID) {
+function MessageListDiv(messageList, getMessageList, token, userID, newMessage, setNewMessage) {
 	if (!messageList) {
 		return (
 			null
@@ -82,7 +82,7 @@ function MessageListDiv(messageList, getMessageList, token, userID) {
 							?
 							<>
 							<Col>
-							<Update message={message} getMessageList={getMessageList} token={token}/>
+							<Update message={message} getMessageList={getMessageList} token={token} newMessage={newMessage}/>
 							</Col>
 							<Col>
 							<Delete getMessageList={getMessageList} message={message} token={token}/>
