@@ -1,17 +1,12 @@
-import { Button, Popover, PopoverHeader, PopoverBody, Input } from "reactstrap";
-import { useState, useEffect, useRef } from 'react';
+import { ArrowClockwise } from "react-bootstrap-icons";
 
-function Update({message, getMessageList, token}) {
-	let [newMessage, setNewMessage] = useState('');
-	// let textRef = useRef(null);
-	let [popoverOpen, setPopoverOpen] = useState(false);
-	console.log(message);
+function Update({message, getMessageList, token, newMessage}) {
 
 	async function updateMessage(messageID) {
 		console.log(messageID);
 		console.log(newMessage);
 		try {
-			let res = await fetch(`http://127.0.0.1:4000/message/}`, {
+			let res = await fetch(`http://127.0.0.1:4000/message/`, {
 				headers: new Headers({
 					'content-type': 'application/json',
 					'Authorization': token
@@ -34,20 +29,7 @@ function Update({message, getMessageList, token}) {
 	}
 
 	return (
-		<div>
-			<Button id="Popover1" type="button">
-				Update
-			</Button>
-			<Popover target="Popover1" isOpen={popoverOpen} toggle={() => {setPopoverOpen(!popoverOpen)}}>
-				<PopoverHeader>
-					<Button onClick={() => {updateMessage(message._id)}}>Update</Button>
-				</PopoverHeader>
-				<PopoverBody>
-					<Input type="text" placeholder="new message text" onChange={(e) => {setNewMessage(e.target.value)
-					}} />
-				</PopoverBody>
-			</Popover>
-		</div>
+		<ArrowClockwise onClick={() => {updateMessage(message._id)}} />
 	)
 }
 

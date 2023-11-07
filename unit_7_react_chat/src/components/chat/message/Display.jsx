@@ -8,7 +8,7 @@ function Display({token, userID, currentRoom}) {
 	let [messageList, setMessageList] = useState([]);
 	let [newMessage, setNewMessage] = useState([]);
 
-	console.log(currentRoom);
+	// console.log(currentRoom);
 
 	useEffect(() => {initMessageList()}, [,currentRoom])
 
@@ -16,12 +16,12 @@ function Display({token, userID, currentRoom}) {
 		<Container>
 			<Row>
 				<Col>
-					{MessageListDiv(messageList, getMessageList, token)}
+					{MessageListDiv(messageList, getMessageList, token, userID, newMessage, setNewMessage)}
 				</Col>
 			</Row>
 			<Row>
 				<Col>
-					<AddMessage getMessageList={getMessageList} token={token} currentRoom={currentRoom} />
+					<AddMessage getMessageList={getMessageList} token={token} currentRoom={currentRoom} newMessage={newMessage} setNewMessage={setNewMessage}/>
 				</Col>
 			</Row>
 		</Container>
@@ -64,7 +64,7 @@ function Display({token, userID, currentRoom}) {
 	}
 }
 
-function MessageListDiv(messageList, getMessageList, token) {
+function MessageListDiv(messageList, getMessageList, token, userID, newMessage, setNewMessage) {
 	if (!messageList) {
 		return (
 			null
@@ -75,13 +75,28 @@ function MessageListDiv(messageList, getMessageList, token) {
 				<Container key={index} style={{border: '2px solid grey'}}>
 					<Row>
 						<Col>
-							{message.text}
-						</Col>
-						<Col>
-							<Update message={message} getMessageList={getMessageList} token={token}/>
-						</Col>
-						<Col>
-							<Delete getMessageList={getMessageList} message={message} token={token}/>
+							<Row>
+								{message.date}
+							</Row>
+							<Row>
+								<Col>
+									{message.text}
+								</Col>
+								{
+									message.owner == userID
+									?
+									<>
+									<Col>
+									<Update message={message} getMessageList={getMessageList} token={token} newMessage={newMessage}/>
+									</Col>
+									<Col>
+									<Delete getMessageList={getMessageList} message={message} token={token}/>
+									</Col>
+								</>
+								:
+								null
+								}
+							</Row>
 						</Col>
 					</Row>
 				</Container>

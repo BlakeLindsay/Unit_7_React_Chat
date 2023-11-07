@@ -68,13 +68,13 @@ function Signup(props) {
         })
             let results = await response.json();
             console.log(results);
-            props.updateToken(results.token, results.user._id);
+            props.setToken(results.token, results.user._id);
             if (response.status === 200) {
                 navigate('/chat');
             }
             
             } catch (error) {
-                
+                console.log(error);
             }
     }
 }
