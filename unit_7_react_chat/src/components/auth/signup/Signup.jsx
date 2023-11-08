@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 function Signup(props) {
-    const navigate = useNavigate('/chat');
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [verifyPassword, setVerifyPassword] = useState("");
@@ -67,14 +67,16 @@ function Signup(props) {
             })
         })
             let results = await response.json();
+            console.log(response.status)
             console.log(results);
-            props.updateToken(results.token, results.user._id);
+            props.setToken(results.token, results.user._id);
             if (response.status === 200) {
                 navigate('/chat');
+                
             }
             
             } catch (error) {
-                
+                console.log('error',error)
             }
     }
 }

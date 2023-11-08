@@ -16,14 +16,16 @@ function Display(props) {
 	useEffect(() => {initRoomList()},[]);
 
 	return (
-		<Container>
+		<Container className="container">
 			<Row>
-				<Col xs="5">
+				<Col xs="6" className="col-left">
 				<h2>Available Rooms</h2>
+				<ul className="room-list">
 					{roomListDiv(roomList, switchCurrentRoom)}
 					<AddRoom roomList={roomList} getRoomList={getRoomList} switchCurrentRoom={switchCurrentRoom} token={props.token}/>
+					</ul>
 				</Col>
-				<Col xs="5">
+				<Col xs="6" className="col-right">
 					<Row>
 						<Col>
 							{

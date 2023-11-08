@@ -29,7 +29,7 @@ function AddRoom({roomList, getRoomList, switchCurrentRoom, token}) {
 
 	return (
 		<div>
-			<Button onClick={addRoom}>Add</Button>
+			<Button className="add-room-button" onClick={addRoom}>Add</Button>
 			<Input type='text' placeholder='Room Name' onChange={(e) => setRoomName(e.target.value)} />
 		</div>
 	)
