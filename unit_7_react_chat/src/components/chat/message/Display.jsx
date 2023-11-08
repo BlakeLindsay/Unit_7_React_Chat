@@ -6,7 +6,7 @@ import { Container, Row, Col, Button, Input } from "reactstrap";
 
 function Display({token, userID, currentRoom}) {
 	let [messageList, setMessageList] = useState([]);
-	let [newMessage, setNewMessage] = useState([]);
+	let [newMessage, setNewMessage] = useState('');
 
 	// console.log(currentRoom);
 

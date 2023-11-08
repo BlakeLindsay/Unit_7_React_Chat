@@ -5,6 +5,7 @@ function Update({message, getMessageList, token, newMessage}) {
 	async function updateMessage(messageID) {
 		console.log(messageID);
 		console.log(newMessage);
+		if (!newMessage) return;
 		try {
 			let res = await fetch(`http://127.0.0.1:4000/message/`, {
 				headers: new Headers({
